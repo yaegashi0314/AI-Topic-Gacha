@@ -7,6 +7,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// HTML,CSS,JSを公開
+app.use(express.static("."));
+
 const ai = new GoogleGenAI({
   apiKey: process.env.GEMINI_API_KEY
 });
@@ -43,14 +46,6 @@ app.post("/api/chat", async (req, res) => {
     });
   }
 });
-
-app.listen(3000, () => {
-  console.log("http://localhost:3000");
-});
-const express = require("express");
-const app = express();
-
-app.use(express.static("."));
 
 app.listen(3000, () => {
   console.log("http://localhost:3000");
